@@ -190,6 +190,7 @@ def remove_light_single(img_f:str, out_dir:str):
     
     # Show corrected image
     corrected_image = image - estimated_model
+    corrected_image = np.clip(corrected_image, 0, 1)
 
     corrected_image = (corrected_image*(2**16 - 1)).astype(np.uint16)
     cv2.imwrite(osp.join(out_dir, f"corrected_image_{base_name}.png"), corrected_image)
