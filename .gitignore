@@ -1,0 +1,10 @@
+*.png
+*.jpg
+*.JPG
+*.egg-info
+*.pyc
+*.npy
+*.txt
+*.zip
+*.tif
+*.json
