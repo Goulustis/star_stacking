@@ -11,7 +11,6 @@ Simple Astrophtography Stacking. This project is inspired by this [star tracking
 ## Installation
 ```bash
 python -m pip install .
-python -m pip install -r requirements.txt
 ```
 
 ## How to run:
