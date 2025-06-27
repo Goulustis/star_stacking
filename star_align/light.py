@@ -179,7 +179,7 @@ def remove_light_single(img_f:str, out_dir:str):
     image = cv2.imread(img_f).astype(np.float32) / 255.0
     
     # Fit light pollution model
-    estimated_model = fit_light_pollution_model_rgb(image, mask, patch_size=50)
+    estimated_model = fit_light_pollution_model_rgb(image, mask, patch_size=24)
     
     # Show corrected image
     corrected_image = image - estimated_model
