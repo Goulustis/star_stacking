@@ -178,16 +178,18 @@ def remove_light_single(img_f:str, out_dir:str):
     mask = ~mask  # Invert mask to get background pixels
     image = cv2.imread(img_f).astype(np.float32) / 255.0
     
-    # Fit light pollution model
-    estimated_model = fit_light_pollution_model_rgb(image, mask, patch_size=24)
+    base_name = f"{osp.basename(img_f).split('.')[0]}"
+    model_f = osp.join(out_dir, f"estimated_model_{base_name}.npy")
+    if not osp.exists(model_f):
+        # Fit light pollution model
+        estimated_model = fit_light_pollution_model_rgb(image, mask, patch_size=24)
+        # Save estimated light pollution as .npy
+        np.save(model_f, estimated_model.astype(np.float32))
+    else:
+        estimated_model = np.load(model_f)
     
     # Show corrected image
     corrected_image = image - estimated_model
-
-    base_name = f"{osp.basename(img_f).split('.')[0]}"
-
-    # Save estimated light pollution as .npy
-    np.save(osp.join(out_dir, f"estimated_model_{base_name}.npy"), estimated_model.astype(np.float32))
 
     corrected_image = (corrected_image*(2**16 - 1)).astype(np.uint16)
     cv2.imwrite(osp.join(out_dir, f"corrected_image_{base_name}.png"), corrected_image)
