@@ -190,7 +190,7 @@ def remove_light_single(img_f:str, out_dir:str):
     np.save(osp.join(out_dir, f"estimated_model_{base_name}.npy"), estimated_model.astype(np.float32))
 
     corrected_image = (corrected_image*(2**16 - 1)).astype(np.uint16)
-    cv2.imwrite(osp.join(out_dir, f"corrected_image_{base_name}.png"))
+    cv2.imwrite(osp.join(out_dir, f"corrected_image_{base_name}.png"), corrected_image)
 
 
 def remove_light_pollution(img_dir:str = "raw_imgs/Stacking 11pm-2", 
@@ -203,7 +203,7 @@ def remove_light_pollution(img_dir:str = "raw_imgs/Stacking 11pm-2",
     img_fs = sorted(glob.glob(f"{img_dir}/*.JPG"))
     
     rm_light_fn = partial(remove_light_single, out_dir=out_dir)
-    parallel_map(rm_light_fn, img_fs, max_threads=16, show_pbar=True, desc="Processing images")
+    parallel_map(rm_light_fn, img_fs, max_threads=8, show_pbar=True, desc="Processing images")
     return out_dir
 
 
