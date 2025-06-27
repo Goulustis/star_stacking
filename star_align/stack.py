@@ -62,5 +62,5 @@ def process_and_stack(img_dir:str, work_dir:str):
     track_f = osp.join(corr_img_dir, "track.npy")
     track = build_track(corr_img_dir, track_f)
     
-    out_f = osp.join(work_dir, f"stack_{osp.basename(img_dir)}")
+    out_f = osp.join(work_dir, f"stack_{osp.basename(img_dir)}.png")
     warp_stack(corr_img_dir, track, out_f)
