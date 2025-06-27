@@ -4,7 +4,8 @@
 *.egg-info
 *.pyc
 *.npy
-*.txt
 *.zip
 *.tif
 *.json
+
+raw_imgs
