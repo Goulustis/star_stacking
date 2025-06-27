@@ -98,7 +98,7 @@ def find_matches_from_imgs(img1, img2, min_dist=30, ret_msk:bool=False):
 
 
 def build_track(img_dir:str, save_f = "track.npy"):
-    img_fs = sorted(glob.glob(f"{img_dir}/*image*.JPG"))
+    img_fs = sorted(glob.glob(f"{img_dir}/*image*.png"))
 
     good_kpt1, good_kpt2, _ = find_matches_from_imgs(img_fs[0], img_fs[1], min_dist=30, ret_msk=False)
     track = [good_kpt1, good_kpt2]
