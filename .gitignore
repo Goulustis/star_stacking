@@ -1,11 +1,7 @@
-*.png
-*.jpg
-*.JPG
 *.egg-info
 *.pyc
-*.npy
-*.zip
-*.tif
-*.json
 
-raw_imgs
+.vscode
+pre_proc/
+archived_results/
+raw_imgs/
