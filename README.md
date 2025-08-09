@@ -14,9 +14,9 @@ python -m pip install .
 ```
 
 ## How to run:
-```
-python run.py
-```
+1. prepare a folder containing `.JPG` images  
+2. update the `img_dir` in `run.py`
+3. Finally run: `python run.py`
 
 ## Results
 <table>
